@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from './App.styled';
 import { Statistics } from './Statistics ';
@@ -9,9 +9,12 @@ export const App = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
-  const [countTotalFeedback, setCountTotalFeedback] = useState(0);
-  const [countPositiveFeedbackPercentage, setCountPositiveFeedbackPercentage] =
-    useState(0);
+  /* const [countTotalFeedback, setCountTotalFeedback] = useState(0); */
+ /*  const [countPositiveFeedbackPercentage, setCountPositiveFeedbackPercentage] =
+    useState(0); */
+
+  const countTotalFeedback = good+neutral+bad;
+  const countPositiveFeedbackPercentage=(good / countTotalFeedback).toFixed(2);
 
   const handleAddFeedback = buttonName => {
     switch (buttonName) {
@@ -29,13 +32,13 @@ export const App = () => {
     }
   };
 
-  useEffect(() => {
+ /*  useEffect(() => {
     setCountTotalFeedback(good + neutral + bad);
-  }, [good, neutral, bad]);
+  }, [good, neutral, bad]); */
 
-  useEffect(() => {
+/*   useEffect(() => {
     return setCountPositiveFeedbackPercentage(good / countTotalFeedback);
-  }, [good, countTotalFeedback]);
+  }, [good, countTotalFeedback]); */
 
   return (
     <Container>
